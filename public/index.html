@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Smart To-Do & Reminder</title>
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+  <header class="container">
+    <h1>Smart To-Do & Reminder</h1>
+    <p class="subtitle">Manage homework, chores, and personal goals</p>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Add a Task</h2>
+      <form id="task-form">
+        <label>
+          Task
+          <input id="task-input" type="text" placeholder="e.g., Finish math homework" required/>
+        </label>
+
+        <label>
+          Deadline (optional)
+          <input id="deadline-input" type="datetime-local" />
+        </label>
+
+        <button type="submit">Add Task</button>
+      </form>
+      <p class="hint">
+        Tip: Add a deadline to get a timed reminder. You can still add tasks without one.
+      </p>
+    </section>
+
+    <section class="card">
+      <div class="row">
+        <h2>Your Tasks</h2>
+        <div class="filters">
+          <button id="filter-all" class="active" type="button">All</button>
+          <button id="filter-open" type="button">Open</button>
+          <button id="filter-done" type="button">Completed</button>
+        </div>
+      </div>
+      <ul id="task-list" class="task-list" aria-live="polite"></ul>
+      <div class="row">
+        <button id="clear-completed" type="button">Clear Completed</button>
+        <button id="clear-all" type="button">Clear All</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Reminders</h2>
+      <div id="reminders" class="reminders" aria-live="polite"></div>
+    </section>
+
+    <section class="card">
+      <h2>Extra Credit: Motivation</h2>
+      <button id="get-quote" type="button">Get Motivational Quote</button>
+      <blockquote id="quote-box" class="quote">Click the button for a boost ✨</blockquote>
+    </section>
+  </main>
+
+  <footer class="container footnote">
+    <small>Built with async timers, events, and localStorage.</small>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

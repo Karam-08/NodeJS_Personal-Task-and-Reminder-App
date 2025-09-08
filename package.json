@@ -1,0 +1,25 @@
+{
+  "name": "nodejs_personal-task-and-reminder-app",
+  "version": "1.0.0",
+  "description": "NodeJS Personal Task and Reminder App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Karam-08/NodeJS_Personal-Task-and-Reminder-App.git"
+  },
+  "keywords": [
+    "Personal",
+    "Task",
+    "Reminder",
+    "App"
+  ],
+  "author": "Karam Abbas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Karam-08/NodeJS_Personal-Task-and-Reminder-App/issues"
+  },
+  "homepage": "https://github.com/Karam-08/NodeJS_Personal-Task-and-Reminder-App#readme"
+}
