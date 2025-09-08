@@ -5,7 +5,7 @@
 }
 
 body{
-    background-color: rgb(119, 176, 237);
+    background-color: rgb(120, 47, 157);
     color: white;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -16,4 +16,14 @@ header{
 
 h1, h2{
     margin: 10px 0;
+    text-shadow: 2px 2px black;
+}
+
+button{
+    margin: 2px;
+    padding: 5px;
+    border: 2px solid rgb(199, 7, 190);
+    border-radius: 8px;
+    background-color: rgb(0, 29, 250);
+    color: gold;
 }
