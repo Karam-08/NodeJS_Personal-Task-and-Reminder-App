@@ -1,29 +1,131 @@
 *{
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
+    margin: 0;
 }
 
 body{
-    background-color: rgb(120, 47, 157);
-    color: white;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-header{
-    text-align: center;
+    font-family: Arial, sans-serif;
+    background: white;
+    color: black;
+    font-size: 16px;
 }
 
 h1, h2{
-    margin: 10px 0;
-    text-shadow: 2px 2px black;
+    color: blue;
+    margin-bottom: 10px;
+}
+
+.subtitle{
+    font-size: 16px;
+    color: gray;
+}
+
+.container{
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0px 10px;
+}
+
+/* === Cards === */
+.card{
+    border: 2px solid black;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+/* === Forms === */
+label{
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="datetime-local"]{
+    width: 100%;
+    padding: 6px;
+    margin-top: 4px;
+    border: 1px solid black;
 }
 
 button{
-    margin: 2px;
-    padding: 5px;
-    border: 2px solid rgb(199, 7, 190);
-    border-radius: 8px;
-    background-color: rgb(0, 29, 250);
-    color: gold;
+    background: blue;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+button:hover{
+    background: darkblue;
+}
+
+.filters button{
+    background: lightgray;
+    color: black;
+    border: 1px solid black;
+    margin-left: 5px;
+    padding: 4px 8px;
+}
+
+.filters button.active{
+    background: blue;
+    color: white;
+}
+
+.hint{
+    font-size: 13px;
+    color: gray;
+    margin-top: 6px;
+}
+
+/* === Task List === */
+.task-list{
+    list-style: none;
+    padding: 0;
+    margin: 15px 0px;
+}
+
+.task-list li{
+    border: 1px solid black;
+    padding: 8px;
+    margin-bottom: 6px;
+}
+
+.task-list li.completed{
+    border-left: 6px solid green;
+    text-decoration: line-through;
+}
+
+.task-list li.warning{
+    border-left: 6px solid orange;
+}
+
+.task-list li.overdue{
+    border-left: 6px solid red;
+}
+
+/* === Reminders === */
+.reminders{
+    font-weight: bold;
+    color: orange;
+    font-size: 14px;
+}
+
+/* === Quotes === */
+.quote{
+    margin-top: 10px;
+    font-style: italic;
+    color: black;
+    border-left: 3px solid blue;
+    padding-left: 8px;
+    font-size: 14px;
+}
+
+/* === Footer === */
+.footnote{
+    text-align: center;
+    font-size: 12px;
+    color: gray;
+    margin-top: 20px;
 }
