@@ -5,7 +5,7 @@
 
 body{
     font-family: Arial, sans-serif;
-    background: white;
+    background-color: white;
     color: black;
     font-size: 16px;
 }
@@ -48,7 +48,7 @@ input[type="datetime-local"]{
 }
 
 button{
-    background: blue;
+    background-color: blue;
     color: white;
     border: none;
     padding: 6px 12px;
@@ -56,12 +56,36 @@ button{
     margin-top: 8px;
 }
 
+#check{
+    margin-right: 10px;
+    background-color: rgb(29, 198, 29);
+    border: 2px double black;
+    border-radius: 15px;
+    padding: 4px 8px;
+}
+
+#check:hover{
+    background-color: darkgreen;
+}
+
+#delete{
+    margin-right: 10px;
+    background-color: rgb(220, 7, 7);
+    border: 2px double black;
+    border-radius: 15px;
+    padding: 4px 8px;
+}
+
+#delete:hover{
+    background-color: darkred;
+} 
+
 button:hover{
-    background: darkblue;
+    background-color: darkblue;
 }
 
 .filters button{
-    background: lightgray;
+    background-color: lightgray;
     color: black;
     border: 1px solid black;
     margin-left: 5px;
@@ -69,7 +93,7 @@ button:hover{
 }
 
 .filters button.active{
-    background: blue;
+    background-color: blue;
     color: white;
 }
 
