@@ -116,7 +116,7 @@ button:hover{
     margin-bottom: 6px;
 }
 
-.task-list li.completed{
+.task-list li.done{
     border-left: 6px solid green;
     text-decoration: line-through;
 }

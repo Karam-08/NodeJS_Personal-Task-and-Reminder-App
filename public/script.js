@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
     $('#submit').on('click', function(e){
         e.preventDefault();
         let task = $('#task-input').val()
@@ -24,26 +25,41 @@ $(document).ready(function(){
         $("#task-input").val("")
         $("#deadline-input").val("")
     })
+
+    $("#task-list").on('click', '#check', function(e){
+        e.preventDefault();
+        $(this).parent().toggleClass("done");
+    })
+
+    $("#task-list").on('click', '#delete', function(e){
+        e.preventDefault();
+        $(this).parent().remove();
+    })
+
     $("#clear-all").on('click', function(e){
         e.preventDefault();
-        $("#task-list").empty()
+        $("#task-list").empty();
     })
+
     $(".filters button").on('click', function(){
         $(".filters button").removeClass("active");
-        $(this).addClass("active")
+        $(this).addClass("active");
 
-        // let filter = $(this).attr("id")
+        let filter = $(this).attr("id");
 
-        // if(filter === "filter-all") {
-        //     $("#task-list li").show();
-        // }else if(filter === "filter-open"){
-        //     $("#task-list li.done").hide(); // Hides the completed tasks
-        //     $("#task-list li:not(.done)").show();
-        // }else if(filter === "filter-done"){
-        //     $("#task-list li.done").show(); // Only shows the completed tasks
-        //     $("#task-list li:not(.done)").hide();
-        // }
+        if(filter === "filter-all") {
+            $("#task-list li").show();
+
+        }else if(filter === "filter-open"){
+            $("#task-list li.done").hide();
+            $("#task-list li:not(.done)").show();
+            
+        }else if(filter === "filter-done"){
+            $("#task-list li.done").show();
+            $("#task-list li:not(.done)").hide();
+        }
     })
+
     $("#get-quote").on('click', async function(){
         try{
             const response = await fetch("https://api.allorigins.win/get?url=" + encodeURIComponent("https://zenquotes.io/api/quotes"));
@@ -53,12 +69,12 @@ $(document).ready(function(){
             const data = await response.json();
             const quotes = JSON.parse(data.contents);
             
-            // Pick a random quote
-            const randomIndex = Math.floor(Math.random() * quotes.length);
+            const randomIndex = Math.floor(Math.random() * quotes.length); // Picks a random quote
             const quote = quotes[randomIndex];
             $("#quote-box").text(quote.q + " - " + quote.a + " ✨");
         }catch(error){
             console.error("There was a problem with the fetch operation:", error);
         }
     })
+
 });
