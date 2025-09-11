@@ -56,7 +56,7 @@ button{
     margin-top: 8px;
 }
 
-#check{
+.check{
     margin-right: 10px;
     background-color: rgb(29, 198, 29);
     border: 2px double black;
@@ -64,11 +64,19 @@ button{
     padding: 4px 8px;
 }
 
-#check:hover{
+.reminder{
+    color: orange;
+    font-weight: bold;
+    margin-top: 6px;
+    padding: 4px 6px;
+    border-left: 4px solid orange;
+}
+
+.check:hover{
     background-color: darkgreen;
 }
 
-#delete{
+.delete{
     margin-right: 10px;
     background-color: rgb(220, 7, 7);
     border: 2px double black;
@@ -76,7 +84,7 @@ button{
     padding: 4px 8px;
 }
 
-#delete:hover{
+.delete:hover{
     background-color: darkred;
 } 
 
