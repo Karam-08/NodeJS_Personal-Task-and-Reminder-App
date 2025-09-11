@@ -2,6 +2,8 @@ $(document).ready(function(){
 
     let taskIDCounter = 0; // Unique ID counter for each task
 
+    loadFromServer(); // Loads tasks from the server when the page loads
+
     $('#submit').on('click', function(e){
         e.preventDefault();
         let task = $('#task-input').val()
@@ -37,20 +39,32 @@ $(document).ready(function(){
             </li>`
             );
         
-            if(delay > 0){
+            if(delay <= 0){
+                $("#reminders").append(
+                    `<div class="reminder">Task "${task}" is already overdue!</div>`
+                );
+                $(`#task-list li[data-id="${taskID}"]`).addClass("overdue");
+            }else if(delay <= 24 * 60 * 60 * 1000){
                 setTimeout(function(){
                     $("#reminders").append(
-                    `<div class="reminder">Reminder: Task "${task}" is due now!</div>`
+                        `<div class="reminder">Task "${task}" is due within 24 hours!</div>`
                     );
-                    $(`#task-list li[data-id="${taskID}"]`).addClass("overdue")
-                }, delay)
-            }else if(delay < 1000 * 60 * 60 * 24){
+                    $(`#task-list li[data-id="${taskID}"]`).addClass("warning");
+                }, delay - (60 * 60 * 1000)); 
+                // fire 1 hour before deadline, adjust as needed
                 setTimeout(function(){
                     $("#reminders").append(
-                    `<div class="reminder">Reminder: Task "${task}" is due within 24 hours!</div>`
+                        `<div class="reminder">🚨 Task "${task}" is due now!</div>`
                     );
-                    $(`#task-list li[data-id="${taskID}"]`).addClass("warning")
-                })
+                    $(`#task-list li[data-id="${taskID}"]`).addClass("overdue");
+                }, delay);
+            }else{
+                setTimeout(function(){
+                    $("#reminders").append(
+                        `<div class="reminder">🚨 Task "${task}" is due now!</div>`
+                    );
+                    $(`#task-list li[data-id="${taskID}"]`).addClass("overdue");
+                }, delay);
             }
         }else{
             $("#task-list").append(
@@ -64,26 +78,31 @@ $(document).ready(function(){
 
         $("#task-input").val("")
         $("#deadline-input").val("")
+        saveToServer();
     })
 
     $("#task-list").on('click', '.check', function(e){
         e.preventDefault();
         $(this).parent().toggleClass("done");
+        saveToServer();
     })
 
     $("#task-list").on('click', '.delete', function(e){
         e.preventDefault();
         $(this).parent().remove();
+        saveToServer();
     })
 
     $("#clear-all").on('click', function(e){
         e.preventDefault();
         $("#task-list").empty();
+        saveToServer();
     })
 
     $("#clear-all").on('click', function(e){
         e.preventDefault();
         $("#task-list li.done").remove();
+        saveToServer();
     })
 
     $(".filters button").on('click', function(){
@@ -121,4 +140,36 @@ $(document).ready(function(){
             console.error("There was a problem with the fetch operation:", error);
         }
     })
+
+    function saveToServer(){
+        const tasks = [];
+        $("#task-list li").each(function(){
+            tasks.push({
+                id: $(this).data("id"),
+                text: $(this).clone().children("button").remove().end().text().trim(),
+                done: $(this).hasClass("done")
+            })
+        })
+        fetch('/tasks', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(tasks)
+        })
+    }
+    function loadFromServer(){
+        fetch('/tasks')
+        .then(res => res.json())
+        .then(tasks => {
+            $("#task-list").empty();
+            tasks.forEach(task => {
+                $("#task-list").append(
+                    `<li data-id="${task.id}" class="${task.done ? "done" : ""}">
+                        ${task.text}
+                        <button class="check">Check off Task</button>
+                        <button class="delete">Delete</button>
+                    </li>`
+                );
+            });
+        });
+    }
 });
