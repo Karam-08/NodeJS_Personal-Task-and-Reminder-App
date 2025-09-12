@@ -66,7 +66,10 @@ $(document).ready(function(){
         li.toggleClass("done");
 
         if(li.hasClass("done")){
-            if(countdown.length) countdown.text(`Completed - ${li.text().trim()}`);
+            if(countdown.length){
+                let taskText = li.clone().children("button, .countdown").remove().end().text().trim();
+                countdown.text(`Completed - ${taskText}`);
+            }
             if(countdownTimers[id]){
                 clearInterval(countdownTimers[id]);
                 delete countdownTimers[id];
@@ -76,7 +79,6 @@ $(document).ready(function(){
                 startCountdown(li, countdown.data("deadline"));
             }
         }
-
         saveToServer();
     });
 
