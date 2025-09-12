@@ -112,28 +112,28 @@ button:hover{
 }
 
 /* === Task List === */
-.task-list{
+#task-list{
     list-style: none;
     padding: 0;
     margin: 15px 0px;
 }
 
-.task-list li{
+#task-list li{
     border: 1px solid black;
     padding: 8px;
     margin-bottom: 6px;
 }
 
-.task-list li.done{
+#task-list li.done{
     border-left: 6px solid green;
     text-decoration: line-through;
 }
 
-.task-list li.warning{
+#task-list li.warning{
     border-left: 6px solid orange;
 }
 
-.task-list li.overdue{
+#task-list li.overdue{
     border-left: 6px solid red;
 }
 
