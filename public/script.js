@@ -5,7 +5,7 @@ $(document).ready(function(){
 
     loadFromServer(); // Loads tasks when page starts
 
-    // --- ADD TASK ---
+    // Add task
     $('#submit').on('click', function(e){
         e.preventDefault();
         let task = $('#task-input').val(); // Gets task input
