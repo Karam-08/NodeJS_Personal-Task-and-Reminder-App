@@ -26,7 +26,6 @@ h1, h2{
     padding: 0px 10px;
 }
 
-/* === Cards === */
 .card{
     border: 2px solid black;
     padding: 15px;
@@ -111,7 +110,6 @@ button:hover{
     margin-top: 6px;
 }
 
-/* === Task List === */
 #task-list{
     list-style: none;
     padding: 0;
@@ -125,26 +123,44 @@ button:hover{
 }
 
 #task-list li.done{
+    text-decoration: line-through;
+}
+
+/* Generic done (no urgency) */
+#task-list li.done:not(.warning):not(.overdue){
     border-left: 6px solid green;
     text-decoration: line-through;
+    color: gray;
 }
 
 #task-list li.warning{
     border-left: 6px solid orange;
 }
 
+/* Done with mid urgency */
+#task-list li.done.warning{
+    border-left: 6px solid darkorange;
+    text-decoration: line-through;
+    opacity: 0.8;
+}
+
 #task-list li.overdue{
     border-left: 6px solid red;
 }
 
-/* === Reminders === */
+/* Done with high urgency */
+#task-list li.done.overdue {
+    border-left: 6px solid darkred;
+    text-decoration: line-through;
+    opacity: 0.8;
+}
+
 .reminders{
     font-weight: bold;
     color: orange;
     font-size: 14px;
 }
 
-/* === Quotes === */
 .quote{
     margin-top: 10px;
     font-style: italic;
@@ -154,7 +170,6 @@ button:hover{
     font-size: 14px;
 }
 
-/* === Footer === */
 .footnote{
     text-align: center;
     font-size: 12px;
