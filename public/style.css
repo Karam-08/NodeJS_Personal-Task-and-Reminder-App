@@ -32,7 +32,6 @@ h1, h2{
     margin-bottom: 20px;
 }
 
-/* === Forms === */
 label{
     display: block;
     margin-bottom: 10px;
@@ -149,7 +148,7 @@ button:hover{
 }
 
 /* Done with high urgency */
-#task-list li.done.overdue {
+#task-list li.done.overdue{
     border-left: 6px solid darkred;
     text-decoration: line-through;
     opacity: 0.8;
